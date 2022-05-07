@@ -1,9 +1,12 @@
+// import { setValkryies } from './data/dataLoader';
 import { Button, Typography } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { getDoc, setDoc, doc } from "firebase/firestore"; 
+import { getDoc, setDoc, doc } from "firebase/firestore";
 import {db} from './firebase';
 import './index.css';
+
+// setValkryies();
 
 // ========================================
 // Add a new document with a generated id.
@@ -21,7 +24,7 @@ function App() {
   const getNumber = useCallback( async () => {
     try {
       const docSnap = await getDoc(numberDocRef);
-      
+
       if (docSnap.exists()) {
         setNumber(docSnap.data().value);
       } else {
@@ -36,7 +39,7 @@ function App() {
   useEffect(() => {
     getNumber();
   }, [getNumber]);
-  
+
   useEffect(() => {
     if (number !== null) {
       setDBNumber(number);
