@@ -6,7 +6,9 @@ import { valkyries } from "./valkyries";
 async function setValkryie(valk:Valkyrie) {
   const valkDocRef = doc(db, "valkyries", valk.slug);
   await setDoc(valkDocRef, {
-    valk
+    slug: valk.slug,
+    name: valk.name,
+    battleSuit: valk.battleSuit,
   });
 }
 

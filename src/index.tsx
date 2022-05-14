@@ -1,60 +1,63 @@
-// import { setValkryies } from './data/dataLoader';
-import { Button, Typography } from '@mui/material';
-import { useCallback, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { getDoc, setDoc, doc } from "firebase/firestore";
-import {db} from './firebase';
-import './index.css';
-
-// setValkryies();
+import { setValkryies } from "./data/dataLoader";
+import { Typography } from "@mui/material";
+import { ReactElement, useCallback, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./firebase";
+import { Valkyrie } from "./types/Valkyrie";
+import "./index.css";
 
 // ========================================
-// Add a new document with a generated id.
-const numberDocRef = doc(db, "numbers", "number");
-
-async function setDBNumber(value:number) {
-  await setDoc(numberDocRef, {
-    value
-  });
-}
+// Add a new collection.
+const valkRef = collection(db, "valkyries");
 
 function App() {
-  let [number, setNumber] = useState<any>(null);
-
-  const getNumber = useCallback( async () => {
+  let [valkyries, setValks] = useState<Valkyrie[]>([]);
+  const getValks = useCallback(async () => {
     try {
-      const docSnap = await getDoc(numberDocRef);
+      const docSnap = await getDocs(valkRef);
 
-      if (docSnap.exists()) {
-        setNumber(docSnap.data().value);
+      if (!docSnap.empty) {
+        const valks: Valkyrie[] = [];
+        docSnap.forEach((doc) => {
+          let valk: any = doc.data();
+          valks.push({
+            slug: valk.slug,
+            name: valk.name,
+            battleSuit: valk.battleSuit,
+          });
+        });
+        setValks(valks);
       } else {
-        await setDBNumber(0);
-        getNumber();
+        await setValkryies();
+        getValks();
       }
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
   }, []);
 
   useEffect(() => {
-    getNumber();
-  }, [getNumber]);
+    getValks();
+  }, [getValks]);
 
-  useEffect(() => {
-    if (number !== null) {
-      setDBNumber(number);
-    }
-  }, [number]);
+  const valkBlocks: ReactElement[] = [];
 
+  valkyries.forEach((data) => {
+    valkBlocks.push(
+      <Typography variant="h3" gutterBottom key={data.slug}>
+        {data.name} - {data.battleSuit}
+      </Typography>
+    );
+  });
   return (
     <>
       <Typography variant="h1" gutterBottom>
         Honkai Tools
       </Typography>
-      <Button onClick={() => {setNumber(number+1)}} variant="outlined">Add</Button>
-      <Typography variant="h3" gutterBottom>{number?? 0}</Typography>
+      {valkBlocks}
     </>
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
