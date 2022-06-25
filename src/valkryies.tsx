@@ -43,9 +43,6 @@ export function Valkryies() {
 
   return (
     <>
-      <Typography variant="h1" gutterBottom>
-        Honkai Tools
-      </Typography>
       {valkyries.map((data) => {
         return (
           <Typography variant="h3" gutterBottom key={data.slug}>

@@ -1,41 +1,57 @@
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import { SignetGroup } from "../types/Signet";
+
+async function setSignet(signet: SignetGroup) {
+  const docRef = doc(db, "signets", signet.slug);
+  await setDoc(docRef, {
+    slug: signet.slug,
+    flameChaser: signet.flameChaser,
+    name: signet.name,
+    signets: signet.signets,
+  });
+}
+
+export function setSignets() {
+  return signets.map(setSignet);
+}
 
 export const signets: SignetGroup[] = [
   {
-    slug: "HOT-Elysia",
+    slug: "hot-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "HOT-Elysia-1",
+        slug: "hot-elysia-1",
         name: "Blessing of Divine Penalty",
         description:
           "In burst mode, Bombard costs 200% Herrscher Charge and every hit deals 400% ATK of bonus Lightning DMG.",
         type: "Exclusive",
       },
       {
-        slug: "HOT-Elysia-2",
+        slug: "hot-elysia-2",
         name: "Blessing of Tsukuyomi",
         description:
           "Tap [ATK] after evasion to connect into Basic ATK sequence 4. Basic ATK sequence 4 boosts Total DMG by 40% for 5s.",
         type: "Exclusive",
       },
       {
-        slug: "HOT-Elysia-3",
+        slug: "hot-elysia-3",
         name: "Blessing of Hazy Moon",
         description:
           "Basic ATK sequence 5 unleashes 3 bolts of thundering sanction each dealing 900% ATK of Lightning DMG on hit.",
         type: "Exclusive",
       },
       {
-        slug: "HOT-Elysia-4",
+        slug: "hot-elysia-4",
         name: "Blessing of Mitama",
         description:
           "Max Herrscher Charge doubles and entering burst mode fully restores it. In burst mode, 75 Herrscher Charge is restored per second. Basic ATK sequence 5 restores 100 bonus Herrscher Charge.",
         type: "Exclusive",
       },
       {
-        slug: "HOT-Elysia-5",
+        slug: "hot-elysia-5",
         name: "Blessing of Narukami",
         description:
           "Finisher unleashes 8 bolts of thundering sanction each dealing 900% ATK of Lightning DMG on hit.",
@@ -44,40 +60,40 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "HOR-Elysia",
+    slug: "hor-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "HOR-Elysia-1",
+        slug: "hor-elysia-1",
         name: "Blessing of Creation",
         description:
           "In non-bike mode, Charged ATKs create 4 hover guns to attack, each dealing 160% ATK of Ice DMG on hit.",
         type: "Exclusive",
       },
       {
-        slug: "HOR-Elysia-2",
+        slug: "hor-elysia-2",
         name: "Blessing of Truth",
         description:
           "Triggering Ultimate Evasion fully restores Konstruktyom. When Konstruktyom is below 120, any evasion can trigger Ultimate Evasion Skill.",
         type: "Exclusive",
       },
       {
-        slug: "HOR-Elysia-3",
+        slug: "hor-elysia-3",
         name: "Blessing of Reason",
         description:
           "Every hit from hover guns reduces weapon active CD by 0.7s.",
         type: "Exclusive",
       },
       {
-        slug: "HOR-Elysia-4",
+        slug: "hor-elysia-4",
         name: "Blessing of Wisdom",
         description:
           "In bike mode, Charged ATK inflicts a Structural Impact on enemies hit and deals 2250% ATK of Ice DMG.",
         type: "Exclusive",
       },
       {
-        slug: "HOR-Elysia-5",
+        slug: "hor-elysia-5",
         name: "Blessing of Inspiration",
         description:
           "Triggering an Ultimate Evasion by any means inflicts a Structural Impact on enemies hit and deals 3750% ATK of Ice DMG.",
@@ -86,40 +102,40 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "HOFS-Elysia",
+    slug: "hofs-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "HOFS-Elysia-1",
+        slug: "hofs-elysia-1",
         name: "Blessing of Reburn",
         description:
           "Triggering an Ultimate Evasion Skill removes Overheat and clears Heat.",
         type: "Exclusive",
       },
       {
-        slug: "HOFS-Elysia-2",
+        slug: "hofs-elysia-2",
         name: "Blessing of Tempered Warrior",
         description:
           "Aerial Combo ATKs reduce Ultimate Evasion Skill CD by 9s.",
         type: "Exclusive",
       },
       {
-        slug: "HOFS-Elysia-3",
+        slug: "hofs-elysia-3",
         name: "Blessing of Flamescion",
         description:
           "For every black hole created by the Herrscher of Flamescion, Valkyrie restores 25 HP per second and deals 30% bonus Total DMG.",
         type: "Exclusive",
       },
       {
-        slug: "HOFS-Elysia-4",
+        slug: "hofs-elysia-4",
         name: "Blessing of Starfire",
         description:
           "When a black hole created by the Herrscher of Flamescion disappears, a smaller black hole lasting 5s is generated, dealing 300% ATK of Fire DMG per second. CD: 3s.",
         type: "Exclusive",
       },
       {
-        slug: "HOFS-Elysia-5",
+        slug: "hofs-elysia-5",
         name: "Blessing of Heatflow",
         description:
           "Black holes generated by the Herrscher of Flamescion deal 75% bonus Fire DMG. Triggering Ultimate Evasion Skill creates an additional black hole dealing 1200% ATK of Fire DMG.",
@@ -128,39 +144,39 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "SN-Elysia",
+    slug: "sn-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "SN-Elysia-1",
+        slug: "sn-elysia-1",
         name: "Blessing of Kindred",
         description: "Any mark resonance triggers the effect twice. CD: 5s.",
         type: "Exclusive",
       },
       {
-        slug: "SN-Elysia-2",
+        slug: "sn-elysia-2",
         name: "Blessing of Vulnerable Duality",
         description:
           "Triggering Ultimate Evasion Skill reduces Ultimate CD by 40%.",
         type: "Exclusive",
       },
       {
-        slug: "SN-Elysia-3",
+        slug: "sn-elysia-3",
         name: "Blessing of Union",
         description:
           "Within 12s after switching between Saule and Veliona, resonances of either Sunnebrands or Veilmarks trigger the resonance effects of both marks.",
         type: "Exclusive",
       },
       {
-        slug: "SN-Elysia-4",
+        slug: "sn-elysia-4",
         name: "Blessing of Intergrowth",
         description:
           "Switching between Saule and Veliona restores full Ultimate Evasion Skill charges.",
         type: "Exclusive",
       },
       {
-        slug: "SN-Elysia-5",
+        slug: "sn-elysia-5",
         name: "Blessing of Might of Duality",
         description:
           "Casting Ultimate creates a resonance field (up to 3 can be present). Resonances of Sunnebrands or Veilmarks deal 160% ATK of bonus Physical DMG to enemies within the field.",
@@ -169,40 +185,40 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "AKA-Elysia",
+    slug: "aka-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "AKA-Elysia-1",
+        slug: "aka-elysia-1",
         name: "Blessing of Cold Moon",
         description:
           "Inflicting Ice Cell also creates a Frost Ring around the Valkyrie that lasts 6s and deals 180% ATK of Ice DMG per 0.3s to nearby enemies.",
         type: "Exclusive",
       },
       {
-        slug: "AKA-Elysia-2",
+        slug: "aka-elysia-2",
         name: "Blessing of Frost Scythe",
         description:
           "Tap [ATK] after an evasion to hurl a Frost Guisarmier which spins for 5s, gathers enemies nearby, and deals 5400% ATK of Ice DMG. CD: 10s.",
         type: "Exclusive",
       },
       {
-        slug: "AKA-Elysia-3",
+        slug: "aka-elysia-3",
         name: "Blessing of Winter Harvest",
         description:
           "Enemies recovering from Ice Cell are inflicted with 1 stack of Hypothermia.",
         type: "Exclusive",
       },
       {
-        slug: "AKA-Elysia-4",
+        slug: "aka-elysia-4",
         name: "Blessing of Uranian Mirror",
         description:
           "Burst mode costs double SP to maintain. In Burst mode, Valkyrie deals 90% extra Total DMG.",
         type: "Exclusive",
       },
       {
-        slug: "AKA-Elysia-5",
+        slug: "aka-elysia-5",
         name: "Blessing of Stellar Trails",
         description:
           "Inflicting Ice Cell in burst mode also creates a Frost Ring centered around the target, lasting 2s and dealing 480% ATK of Ice DMG per 0.3s to nearby enemies.",
@@ -211,40 +227,40 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "RI-Elysia",
+    slug: "ri-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "RI-Elysia-1",
+        slug: "ri-elysia-1",
         name: "Blessing of Torch",
         description:
           "When a Combo ATK that consumes KE hits an enemy, all gun turrets fire a laser beam at the target to deal Physical DMG equal to the number of Combo ATK stacks x 1600% ATK.",
         type: "Exclusive",
       },
       {
-        slug: "RI-Elysia-2",
+        slug: "ri-elysia-2",
         name: "Blessing of Dawn",
         description:
           "At full KE, the next Combo ATK consumes all of it to constitute 4 stacks and additionally fire 4 homing missiles dealing 3600% ATK of Physical DMG in total.",
         type: "Exclusive",
       },
       {
-        slug: "RI-Elysia-3",
+        slug: "ri-elysia-3",
         name: "Blessing of Blossom",
         description:
           "Homing missiles restore 2 SP on hit. Basic ATK Sequence 6 additionally fires 4 homing missiles, each dealing 450% ATK of Physical DMG.",
         type: "Exclusive",
       },
       {
-        slug: "RI-Elysia-4",
+        slug: "ri-elysia-4",
         name: "Blessing of Prosperity",
         description:
           "Tap [ATK] after an evasion to dash to enemies and deliver an aerial kick, which can be connected into Basic ATK Sequence 4. Basic ATK Sequence 6 restores 150 KE every time it lands.",
         type: "Exclusive",
       },
       {
-        slug: "RI-Elysia-5",
+        slug: "ri-elysia-5",
         name: "Blessing of Fertility",
         description:
           "Ultimate replenishes 40 light bullets for every gun turret and boosts their Tech Level by 1 (caps at 3). Each turret restores KE at a rate of Tech Level x 30 per second.",
@@ -253,40 +269,40 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "VG-Elysia",
+    slug: "vg-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "VG-Elysia-1",
+        slug: "vg-elysia-1",
         name: "Blessing of Impetus",
         description:
           "Entering Sprint triggers Stage 2 and until Sprint ends, attacks cost 40 Resolve more on hit to deal 200% ATK of Fire DMG. CD: 0.1s.",
         type: "Exclusive",
       },
       {
-        slug: "VG-Elysia-2",
+        slug: "vg-elysia-2",
         name: "Blessing of Gloria",
         description:
           "The last hit of Charged ATK or Throw ATK inflicts Magnifica Mark on enemies, which explodes after a short delay, dealing 1500% ATK of Fire DMG.",
         type: "Exclusive",
       },
       {
-        slug: "VG-Elysia-3",
+        slug: "vg-elysia-3",
         name: "Blessing of Sol",
         description:
           "Within 3s of performing an Ultimate Evasion, Basic ATK Sequence 5 or the last hit of Charged ATK inflicts Magnifica Mark on enemies, which explodes after a short delay, dealing 1200% ATK of Fire DMG.",
         type: "Exclusive",
       },
       {
-        slug: "VG-Elysia-4",
+        slug: "vg-elysia-4",
         name: "Blessing of Battle Song",
         description:
           "Weapon Actives deal 200% bonus Total DMG. Hitting an enemy with a Charged ATK in Aura Ignis resets the Weapon Active CD.",
         type: "Exclusive",
       },
       {
-        slug: "VG-Elysia-5",
+        slug: "vg-elysia-5",
         name: "Blessing of Triumph",
         description:
           "Triggering an Ultimate Evasion Skill or detonating Magnifica Mark restores 15 SP.",
@@ -295,40 +311,40 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "PV-Elysia",
+    slug: "pv-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "PV-Elysia-1",
+        slug: "pv-elysia-1",
         name: "Blessing of Dark Wings",
         description:
           "When Ultimate Evasion Skill is triggered, Oz unleashes dark lightning that deals 4200% ATK of Lightning DMG.",
         type: "Exclusive",
       },
       {
-        slug: "PV-Elysia-2",
+        slug: "pv-elysia-2",
         name: "Blessing of Retribution",
         description:
           "QTE creates a small lightning field which lasts 5s and deals 3x200% ATK of Lightning DMG per second to enemies within it.",
         type: "Exclusive",
       },
       {
-        slug: "PV-Elysia-3",
+        slug: "pv-elysia-3",
         name: "Blessing of Nightfall",
         description:
           "Weapon Actives deal 200% bonus Total DMG. Summoning Oz with Charged ATK or casting Ultimate refills 2 weapon active charges.",
         type: "Exclusive",
       },
       {
-        slug: "PV-Elysia-4",
+        slug: "pv-elysia-4",
         name: "Blessing of Fate",
         description:
           "When hitting an enemy with a weapon active, Oz unleashes dark lightning to deal 2000% ATK of Lightning DMG.",
         type: "Exclusive",
       },
       {
-        slug: "PV-Elysia-5",
+        slug: "pv-elysia-5",
         name: "Blessing of Midnight",
         description:
           "During Ultimate, Oz lingers for 7s after the arrow rain. Every 7 hits from Oz on enemies within the Ultimate range summons dark lightning that deals 1500% ATK of Lightning DMG.",
@@ -337,40 +353,40 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "ELY-Elysia",
+    slug: "ely-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "ELY-Elysia-1",
+        slug: "ely-elysia-1",
         name: "Blessing of Purity",
         description:
           "Ultimate lasts 15s longer. While Ultimate is active, a wave of ricochet occurs under Flawless Dome every second. The ricochets triggered in this way only ricochet 3 times but deal 130% ATK of Physical DMG (DMG source: Ultimate).",
         type: "Exclusive",
       },
       {
-        slug: "ELY-Elysia-2",
+        slug: "ely-elysia-2",
         name: "Blessing of Zenith",
         description:
           "While Ultimate is active, each ricochet deals 15% ATK of bonus Physical DMG on hit. Every wave of ricochet reduces weapon active's CD by 0.6s.",
         type: "Exclusive",
       },
       {
-        slug: "ELY-Elysia-3",
+        slug: "ely-elysia-3",
         name: "Blessing of Love",
         description:
           "While Ultimate is active, Charged Shot: Cupid's Bolt consumes 100% bonus Infatuation and deals 700% ATK of bonus Physical DMG.",
         type: "Exclusive",
       },
       {
-        slug: "ELY-Elysia-4",
+        slug: "ely-elysia-4",
         name: "Blessing of Benevolence",
         description:
           "Infatuation is fully restored when Ultimate Evasion Skill is triggered. If Infatuation drops below 100 after using Charged Shot: Cupid's Bolt, you can consume 1 Ultimate Evasion charge to trigger Ultimate Evasion Skill.",
         type: "Exclusive",
       },
       {
-        slug: "ELY-Elysia-5",
+        slug: "ely-elysia-5",
         name: "Blessing of Beauty",
         description:
           "Using weapon active restores 1 additional Ultimate Evasion charge. Enemies take 25% bonus Total DMG when a Crystalline Seed is attached to them.",
@@ -379,37 +395,37 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "BKE-Elysia",
+    slug: "bke-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "BKE-Elysia-1",
+        slug: "bke-elysia-1",
         name: "Blessing of Holy Lance",
         description: "During Basic ATK SEQ 4, tap ATK repeatedly.",
         type: "Exclusive",
       },
       {
-        slug: "BKE-Elysia-2",
+        slug: "bke-elysia-2",
         name: "Blessing of Formation",
         description: "Basic ATK SEQ 5 creates a 3-sec Grav Singularity.",
         type: "Exclusive",
       },
       {
-        slug: "BKE-Elysia-3",
+        slug: "bke-elysia-3",
         name: "Blessing of Glory",
         description: "In Burst mode, Weapon Active has 70% shorter CD.",
         type: "Exclusive",
       },
       {
-        slug: "BKE-Elysia-4",
+        slug: "bke-elysia-4",
         name: "Blessing of Paragon",
         description:
           "Casting Weapon Active shortens Ultimate CD. Ultimate grants 5 stacks of Paragon.",
         type: "Exclusive",
       },
       {
-        slug: "BKE-Elysia-5",
+        slug: "bke-elysia-5",
         name: "Blessing of Gambit",
         description:
           "Triggering Retaliation or Ultimate Evasion boosts Physical DMG.",
@@ -418,36 +434,36 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "LK-Elysia",
+    slug: "lk-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "LK-Elysia-1",
+        slug: "lk-elysia-1",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "LK-Elysia-2",
+        slug: "lk-elysia-2",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "LK-Elysia-3",
+        slug: "lk-elysia-3",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "LK-Elysia-4",
+        slug: "lk-elysia-4",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "LK-Elysia-5",
+        slug: "lk-elysia-5",
         name: "",
         description: "",
         type: "Exclusive",
@@ -455,36 +471,36 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "VB-Elysia",
+    slug: "vb-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "1VB-Elysia-",
+        slug: "1vb-elysia-",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "VB-Elysia-2",
+        slug: "vb-elysia-2",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "VB-Elysia-3",
+        slug: "vb-elysia-3",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "VB-Elysia-4",
+        slug: "vb-elysia-4",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "VB-Elysia-5",
+        slug: "vb-elysia-5",
         name: "",
         description: "",
         type: "Exclusive",
@@ -492,36 +508,36 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "NYX-Elysia",
+    slug: "nyx-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "NYX-Elysia-1",
+        slug: "nyx-elysia-1",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "NYX-Elysia-2",
+        slug: "nyx-elysia-2",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "NYX-Elysia-3",
+        slug: "nyx-elysia-3",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "NYX-Elysia-4",
+        slug: "nyx-elysia-4",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "NYX-Elysia-5",
+        slug: "nyx-elysia-5",
         name: "",
         description: "",
         type: "Exclusive",
@@ -529,36 +545,36 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "IO-Elysia",
+    slug: "io-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "IO-Elysia-1",
+        slug: "io-elysia-1",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "IO-Elysia-2",
+        slug: "io-elysia-2",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "IO-Elysia-3",
+        slug: "io-elysia-3",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "IO-Elysia-4",
+        slug: "io-elysia-4",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "IO-Elysia-5",
+        slug: "io-elysia-5",
         name: "",
         description: "",
         type: "Exclusive",
@@ -566,36 +582,36 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "RVN-Elysia",
+    slug: "rvn-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "RVN-Elysia-1",
+        slug: "rvn-elysia-1",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "RVN-Elysia-2",
+        slug: "rvn-elysia-2",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "RVN-Elysia-3",
+        slug: "rvn-elysia-3",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "RVN-Elysia-4",
+        slug: "rvn-elysia-4",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "RVN-Elysia-5",
+        slug: "rvn-elysia-5",
         name: "",
         description: "",
         type: "Exclusive",
@@ -603,36 +619,36 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "HOS-Elysia",
+    slug: "hos-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "HOS-Elysia-1",
+        slug: "hos-elysia-1",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "HOS-Elysia-2",
+        slug: "hos-elysia-2",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "HOS-Elysia-3",
+        slug: "hos-elysia-3",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "HOS-Elysia-4",
+        slug: "hos-elysia-4",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "HOS-Elysia-5",
+        slug: "hos-elysia-5",
         name: "",
         description: "",
         type: "Exclusive",
@@ -640,36 +656,36 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "TP-Elysia",
+    slug: "tp-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "TP-Elysia-1",
+        slug: "tp-elysia-1",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "TP-Elysia-2",
+        slug: "tp-elysia-2",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "TP-Elysia-3",
+        slug: "tp-elysia-3",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "TP-Elysia-4",
+        slug: "tp-elysia-4",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "TP-Elysia-5",
+        slug: "tp-elysia-5",
         name: "",
         description: "",
         type: "Exclusive",
@@ -677,36 +693,36 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "SNS-Elysia",
+    slug: "sns-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "SNS-Elysia-1",
+        slug: "sns-elysia-1",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "SNS-Elysia-2",
+        slug: "sns-elysia-2",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "SNS-Elysia-3",
+        slug: "sns-elysia-3",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "SNS-Elysia-4",
+        slug: "sns-elysia-4",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "SNS-Elysia-5",
+        slug: "sns-elysia-5",
         name: "",
         description: "",
         type: "Exclusive",
@@ -714,37 +730,37 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "DA-Elysia",
+    slug: "da-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "DA-Elysia-1",
+        slug: "da-elysia-1",
         name: "Blessing of Stars",
         description: "Ultimate deals bonus Total DMG.",
         type: "Exclusive",
       },
       {
-        slug: "DA-Elysia-2",
+        slug: "da-elysia-2",
         name: "Blessing of Gale",
         description: "In Astral Harness, all attacks ignite enemies.",
         type: "Exclusive",
       },
       {
-        slug: "DA-Elysia-3",
+        slug: "da-elysia-3",
         name: "Blessing of Sheen",
         description: "Ultimates do not suspend Astrum consumption.",
         type: "Exclusive",
       },
       {
-        slug: "DA-Elysia-4",
+        slug: "da-elysia-4",
         name: "Blessing of Halo",
         description:
           "Ultimates deal bonus Fire DMG within 8 meters of target hit.",
         type: "Exclusive",
       },
       {
-        slug: "DA-Elysia-5",
+        slug: "da-elysia-5",
         name: "Blessing of Brilliance",
         description: "Ultimate costs no SP and restores SP.",
         type: "Exclusive",
@@ -752,36 +768,36 @@ export const signets: SignetGroup[] = [
     ],
   },
   {
-    slug: "SW-Elysia",
+    slug: "sw-elysia",
     flameChaser: "Elysia",
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "SW-Elysia-1",
+        slug: "sw-elysia-1",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "SW-Elysia-2",
+        slug: "sw-elysia-2",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "SW-Elysia-3",
+        slug: "sw-elysia-3",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "SW-Elysia-4",
+        slug: "sw-elysia-4",
         name: "",
         description: "",
         type: "Exclusive",
       },
       {
-        slug: "SW-Elysia-5",
+        slug: "sw-elysia-5",
         name: "",
         description: "",
         type: "Exclusive",

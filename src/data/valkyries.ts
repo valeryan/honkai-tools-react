@@ -1,10 +1,10 @@
 import { setDoc, doc } from "firebase/firestore";
-import {db} from '../firebase';
+import { db } from "../firebase";
 import { Valkyrie } from "../types/Valkyrie";
 
-async function setValkryie(valk:Valkyrie) {
-  const valkDocRef = doc(db, "valkyries", valk.slug);
-  await setDoc(valkDocRef, {
+async function setValkryie(valk: Valkyrie) {
+  const docRef = doc(db, "valkyries", valk.slug);
+  await setDoc(docRef, {
     slug: valk.slug,
     name: valk.name,
     battleSuit: valk.battleSuit,
@@ -17,103 +17,103 @@ export function setValkryies() {
 
 export const valkyries: Valkyrie[] = [
   {
-    slug: "IO",
+    slug: "io",
     name: "Mobius",
     battleSuit: "Infinite Ouroboros",
   },
   {
-    slug: "SW",
+    slug: "sw",
     name: "Bronya Zaychik",
     battleSuit: "Silverwing N-EX",
   },
   {
-    slug: "AKA",
+    slug: "aka",
     name: "Rita Rossweise",
     battleSuit: "Argent Knight Artemis",
   },
   {
-    slug: "HOFS",
+    slug: "hofs",
     name: "Kiana Kaslana",
     battleSuit: "Herrscher of Flamescion",
   },
   {
-    slug: "DA",
+    slug: "da",
     name: "Bianka Ataegina",
     battleSuit: "Dea Anchora",
   },
   {
-    slug: "NYX",
+    slug: "nyx",
     name: '"Seele" Vollerei',
     battleSuit: "Starchasm Nyx",
   },
   {
-    slug: "HOS",
+    slug: "hos",
     name: "Fu Hua",
     battleSuit: "Herrscher of Sentience",
   },
   {
-    slug: "HOR",
+    slug: "hor",
     name: "Bronya Zaychik",
     battleSuit: "Herrscher of Reason",
   },
   {
-    slug: "PV",
+    slug: "pv",
     name: "Fischl",
     battleSuit: "Prinzessin Der Verurteilung",
   },
   {
-    slug: "HOT",
+    slug: "hot",
     name: "Raiden Mei",
     battleSuit: "Herrscher of Thunder",
   },
   {
-    slug: "RVN",
+    slug: "rvn",
     name: "Natasha Cioara",
     battleSuit: "Midnight Absinthe",
   },
   {
-    slug: "ELY",
+    slug: "ely",
     name: "Elysia",
     battleSuit: "Miss Pink Elf",
   },
   {
-    slug: "TP",
+    slug: "tp",
     name: "Theresa Apocalypse",
     battleSuit: "Twilight Paladin",
   },
   {
-    slug: "VB",
+    slug: "vb",
     name: "Raiden Mei",
     battleSuit: "Striker Fulminata",
   },
   {
-    slug: "SN",
+    slug: "sn",
     name: "Seele Vollerei",
     battleSuit: "Stygian Nymph Seele",
   },
   {
-    slug: "BKE",
+    slug: "bke",
     name: "Durandal",
     battleSuit: "Bright Knight Excelsis",
   },
   {
-    slug: "VG",
+    slug: "vg",
     name: "Bianka Ataegina",
     battleSuit: "Valkyrie Gloria",
   },
   {
-    slug: "RI",
+    slug: "ri",
     name: "Kallen Kaslana",
     battleSuit: "Ritual Imayoh",
   },
   {
-    slug: "LK",
+    slug: "lk",
     name: "Theresa Apocalypse",
     battleSuit: "Luna Kindred",
   },
   {
-    slug: "SNS",
+    slug: "sns",
     name: "Carole Peppers",
     battleSuit: "Sweet 'N Spicy",
-  }
+  },
 ];

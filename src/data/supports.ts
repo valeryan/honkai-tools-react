@@ -3,8 +3,8 @@ import {db} from '../firebase';
 import { Support } from "../types/Support";
 
 async function setSupport(support:Support) {
-  const supportDocRef = doc(db, "supports", support.slug);
-  await setDoc(supportDocRef, {
+  const docRef = doc(db, "supports", support.slug);
+  await setDoc(docRef, {
     name: support.name,
     tagline: support.tagline,
     description: support.description,
@@ -13,7 +13,7 @@ async function setSupport(support:Support) {
 }
 
 export function setSupports() {
-  supports.map(setSupport);
+  return supports.map(setSupport);
 }
 
 export const supports: Support[] = [
@@ -22,54 +22,54 @@ export const supports: Support[] = [
     tagline: "Black Hole",
     description:
       "Valkyrie Chariot unleashes a black hole to gather enemies nearby and bleed them. CD: 30s.",
-    slug: "VC",
+    slug: "vc",
   },
   {
     name: "Divine Prayer",
     tagline: "Divine Retribution",
     description:
       "Divine Prayer creates a global time fracture during which enemies suffer from Divine Penalty, take Lightning DMG, and stay impaired. CD: 40s.",
-    slug: "DP",
+    slug: "dp",
   },
   {
     name: "Snowy Sniper",
     tagline: "Arctic Snow",
     description:
       "Snowy Sniper summons Arctic Snow to freeze enemies and make them take bonus Physical DMG. CD: 60s.",
-    slug: "SS",
+    slug: "ss",
   },
   {
     name: "Lightning Empress",
     tagline: "Lightning Charge",
     description: "Lightning Empress restores SP for the Valkyrie deployed.",
-    slug: "LE",
+    slug: "le",
   },
   {
     name: "Vermilion Knight: Eclipse",
     tagline: "Ravaging Flame",
     description:
       "Vermilion Knight: Eclipse wields Might of An-Utu to deal massive AoE Fire DMG (reduced below Difficulty 85) and ignite enemies. CD: 60s.",
-    slug: "VKE",
+    slug: "vke",
   },
   {
     name: "Bright Knight: Excelsis",
     tagline: "Knightly Bulwark",
     description:
       "Bright Knight: Excelsis deals hight Physical DMG (reduced below Difficulty 85) and blocks all attacks for the Valkyrie deployed in a short duration. CD: 30s.",
-    slug: "BKE",
+    slug: "bke",
   },
   {
     name: "Azure Empyrea",
     tagline: "Empyrean Sunder",
     description:
       "Azure Empyrea casts Empyrean Sunder to gather enemies, deal AoE Fire DMG (reduced below Difficulty 85), and enhance the Valkyrie deployed. CD: 50s.",
-    slug: "AE",
+    slug: "ae",
   },
   {
     name: "Blood Rose",
     tagline: "Blood Boost",
     description:
       "Blood Rose enables the Valkyrie deployed to consume HP for a huge Total DMG boost.",
-    slug: "BR",
+    slug: "br",
   },
 ];

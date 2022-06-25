@@ -1,4 +1,19 @@
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import { Emblem } from "../types/Emblem";
+
+async function setEmblem(emblem: Emblem) {
+  const docRef = doc(db, "emblems", emblem.slug);
+  await setDoc(docRef, {
+    slug: emblem.slug,
+    name: emblem.name,
+    description: emblem.description,
+  });
+}
+
+export function setEmblems() {
+  return emblems.map(setEmblem);
+}
 
 export const emblems: Emblem[] = [
   {
