@@ -1,63 +1,24 @@
-import { setValkryies } from "./data/dataLoader";
-import { Typography } from "@mui/material";
-import { ReactElement, useCallback, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "./firebase";
-import { Valkyrie } from "./types/Valkyrie";
-import "./index.css";
-
-// ========================================
-// Add a new collection.
-const valkRef = collection(db, "valkyries");
-
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { LoadData } from "./load-data";
+import { Valkryies } from "./valkryies";
+// import your route components too
 function App() {
-  let [valkyries, setValks] = useState<Valkyrie[]>([]);
-  const getValks = useCallback(async () => {
-    try {
-      const docSnap = await getDocs(valkRef);
-
-      if (!docSnap.empty) {
-        const valks: Valkyrie[] = [];
-        docSnap.forEach((doc) => {
-          let valk: any = doc.data();
-          valks.push({
-            slug: valk.slug,
-            name: valk.name,
-            battleSuit: valk.battleSuit,
-          });
-        });
-        setValks(valks);
-      } else {
-        await setValkryies();
-        getValks();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
-
-  useEffect(() => {
-    getValks();
-  }, [getValks]);
-
-  const valkBlocks: ReactElement[] = [];
-
-  valkyries.forEach((data) => {
-    valkBlocks.push(
-      <Typography variant="h3" gutterBottom key={data.slug}>
-        {data.name} - {data.battleSuit}
-      </Typography>
-    );
-  });
-  return (
-    <>
-      <Typography variant="h1" gutterBottom>
-        Honkai Tools
-      </Typography>
-      {valkBlocks}
-    </>
-  );
+  return <>
+  <h1>HEADER</h1>
+  <Outlet />
+  <h2>FOOTER</h2>
+  </>;
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<Valkryies />} />
+        <Route path="load-data" element={<LoadData />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>,
+  document.getElementById("root")
+);

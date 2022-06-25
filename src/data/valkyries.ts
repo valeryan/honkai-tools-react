@@ -1,4 +1,19 @@
+import { setDoc, doc } from "firebase/firestore";
+import {db} from '../firebase';
 import { Valkyrie } from "../types/Valkyrie";
+
+async function setValkryie(valk:Valkyrie) {
+  const valkDocRef = doc(db, "valkyries", valk.slug);
+  await setDoc(valkDocRef, {
+    slug: valk.slug,
+    name: valk.name,
+    battleSuit: valk.battleSuit,
+  });
+}
+
+export function setValkryies() {
+  return valkyries.map(setValkryie);
+}
 
 export const valkyries: Valkyrie[] = [
   {

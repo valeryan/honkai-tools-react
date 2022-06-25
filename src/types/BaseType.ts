@@ -1,4 +1,5 @@
 export interface BaseType {
-    name: string;
-    description?: string;
+  slug: string;
+  name: string;
+  description?: string;
 }
