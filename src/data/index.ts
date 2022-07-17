@@ -3,7 +3,6 @@ import { db } from "../firebase";
 
 export * from "./emblems";
 export * from "./signets";
-export * from "./supports";
 export * from "./valkyries";
 
 export async function deleteAll() {
@@ -21,15 +20,6 @@ export async function deleteAll() {
 
   if (!sigSnap.empty) {
     sigSnap.forEach((doc) => {
-      deleteDoc(doc.ref);
-    });
-  }
-
-  const supRef = collection(db, "supports");
-  const supSnap = await getDocs(supRef);
-
-  if (!supSnap.empty) {
-    supSnap.forEach((doc) => {
       deleteDoc(doc.ref);
     });
   }

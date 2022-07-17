@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
 import { Valkyrie } from "./types/Valkyrie";
-import { setValkryies } from "./data/valkyries";
+import { setValkyries } from "./data/valkyries";
 import "./index.css";
 
 // ========================================
@@ -22,11 +22,13 @@ const getValks = async (callback: (valks: Valkyrie[]) => void) => {
           slug: valk.slug,
           name: valk.name,
           battleSuit: valk.battleSuit,
+          dps: valk.dps,
+          support: valk.support,
         });
       });
       callback(valks);
     } else {
-      await setValkryies();
+      await setValkyries();
       getValks(callback);
     }
   } catch (error) {
@@ -34,7 +36,7 @@ const getValks = async (callback: (valks: Valkyrie[]) => void) => {
   }
 };
 
-export function Valkryies() {
+export function Valkyries() {
   let [valkyries, setValks] = useState<Valkyrie[]>([]);
 
   useEffect(() => {

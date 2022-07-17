@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { LoadData } from "./load-data";
-import { Valkryies } from "./valkryies";
+import { Valkyries } from "./valkyries";
 // import your route components too
 function App() {
   return <>
@@ -20,7 +20,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<Valkryies />} />
+        <Route index element={<Valkyries />} />
         <Route path="load-data" element={<LoadData />} />
       </Route>
     </Routes>

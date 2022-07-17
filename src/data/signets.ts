@@ -1,6 +1,7 @@
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { SignetGroup } from "../types/Signet";
+import { SIGNETS } from "../types/Slug";
 
 async function setSignet(signet: SignetGroup) {
   const docRef = doc(db, "signets", signet.slug);
@@ -23,7 +24,7 @@ export const signets: SignetGroup[] = [
     name: "Exclusive Signets",
     signets: [
       {
-        slug: "hot-elysia-1",
+        slug: SIGNETS.ELYSIA_HOT_1,
         name: "Blessing of Divine Penalty",
         description:
           "In burst mode, Bombard costs 200% Herrscher Charge and every hit deals 400% ATK of bonus Lightning DMG.",
